@@ -110,6 +110,87 @@
          hover:scale-105 active:scale-95;
 }
 
+@utility card-glass {
+  @apply bg-card/50 backdrop-blur-sm border border-border/40 rounded-xl
+         shadow-lg hover:shadow-xl transition-all duration-500;
+}
+
+@utility line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@utility project-card {
+  @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-card via-card to-card/80
+         border border-border/40 shadow-lg hover:shadow-2xl hover:shadow-primary/10
+         transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2;
+}
+
+/* Language tag colors for better visual distinction */
+@utility lang-tag {
+  @apply inline-block px-2 py-1 text-xs font-medium rounded-full border 
+         transition-all duration-300 hover:scale-110;
+}
+
+/* Custom color utilities for specific languages */
+@utility text-javascript {
+  color: #f7df1e;
+}
+@utility text-typescript {
+  color: #3178c6;
+}
+@utility text-python {
+  color: #3776ab;
+}
+@utility text-html {
+  color: #e34f26;
+}
+@utility text-css {
+  color: #1572b6;
+}
+@utility text-react {
+  color: #61dafb;
+}
+@utility text-vue {
+  color: #4fc08d;
+}
+
+/* Skills progress bar animation */
+@keyframes progressFill {
+  from {
+    width: 0%;
+    opacity: 0;
+  }
+  to {
+    width: var(--progress-width);
+    opacity: 1;
+  }
+}
+
+@utility skill-card {
+  @apply relative overflow-hidden rounded-xl bg-card/50 backdrop-blur-sm
+         border border-border/40 shadow-lg hover:shadow-xl hover:shadow-primary/10
+         transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1;
+}
+
+/* Filter button animations */
+@utility filter-button {
+  @apply relative px-6 py-3 rounded-full font-medium transition-all duration-300
+         transform hover:scale-105 active:scale-95;
+}
+
+@utility filter-button-active {
+  @apply bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105;
+}
+
+@utility filter-button-inactive {
+  @apply bg-card/50 border border-border/40 text-muted-foreground 
+         hover:text-foreground hover:border-primary/30 hover:bg-card/80;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
