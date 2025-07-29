@@ -35,11 +35,14 @@ export const Contact = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             Contact
-            <span className="text-primary"> Me</span>
+            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              {" "}
+              Me
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             ¿Do you have a project in mind? Let's work together! Fill out the
             form below or reach out via email or phone.
           </p>
@@ -48,7 +51,7 @@ export const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Información de contacto */}
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-2xl font-semibold text-foreground mb-6">
               Lets get in touch!
             </h3>
 
@@ -70,10 +73,10 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white text-left">
+                  <h4 className="font-medium text-foreground text-left">
                     Email
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-muted-foreground">
                     luismariotoscanopalomino@gmail.com
                   </p>
                 </div>
@@ -96,12 +99,10 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white text-left">
+                  <h4 className="font-medium text-foreground text-left">
                     Phone
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    +57 315 0571959
-                  </p>
+                  <p className="text-muted-foreground">+57 315 0571959</p>
                 </div>
               </div>
 
@@ -128,38 +129,24 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white text-left">
+                  <h4 className="font-medium text-foreground text-left">
                     Location
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Bucaramanga, Colombia
-                  </p>
+                  <p className="text-muted-foreground">Bucaramanga, Colombia</p>
                 </div>
               </div>
             </div>
 
             {/* Redes sociales */}
             <div className="mt-8 flex flex-col items-center">
-              <h4 className="font-medium text-gray-900 dark:text-white mb-4">
+              <h4 className="font-medium text-foreground mb-4">
                 Follow me on social media
               </h4>
               <div className="flex space-x-4">
-                {/* <a
-                  href="#"
-                  className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                  </svg>
-                </a> */}
                 <a
                   href="https://www.linkedin.com/in/luistoscanop"
                   target="_blank"
-                  className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors"
+                  className="w-10 h-10 bg-card border border-border rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-primary-foreground transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -172,7 +159,7 @@ export const Contact = () => {
                 <a
                   href="https://github.com/JustBeingLuis"
                   target="_blank"
-                  className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-800 hover:text-white transition-colors"
+                  className="w-10 h-10 bg-card border border-border rounded-lg flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -192,7 +179,7 @@ export const Contact = () => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-medium text-foreground mb-2"
                 >
                   Name
                 </label>
@@ -203,7 +190,7 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-foreground"
                   placeholder="Your Name"
                 />
               </div>
@@ -211,7 +198,7 @@ export const Contact = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-medium text-foreground mb-2"
                 >
                   Email
                 </label>
@@ -222,7 +209,7 @@ export const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-foreground"
                   placeholder="your@email.com"
                 />
               </div>
@@ -230,7 +217,7 @@ export const Contact = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-medium text-foreground mb-2"
                 >
                   Message
                 </label>
@@ -241,7 +228,7 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-foreground resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -249,12 +236,12 @@ export const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-primary-foreground font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
               >
                 {isSubmitting ? (
                   <>
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-foreground"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -281,7 +268,7 @@ export const Contact = () => {
               </button>
 
               {submitMessage && (
-                <div className="text-center p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg">
+                <div className="text-center p-4 bg-green-500/10 text-green-600 border border-green-500/20 rounded-lg">
                   {submitMessage}
                 </div>
               )}
