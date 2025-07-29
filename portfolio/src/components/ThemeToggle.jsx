@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react"; // Assuming you have these icons installed
-import { cn } from "../lib/utils"; // Adjust the import path as necessary
+import { Sun, Moon } from "lucide-react";
+import { cn } from "../lib/utils";
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({ className, showLabel = false }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const ThemeToggle = () => {
     }
   }, []);
 
-  const toogleTheme = () => {
+  const toggleTheme = () => {
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
@@ -30,16 +30,24 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      onClick={toogleTheme}
+      onClick={toggleTheme}
       className={cn(
-        "fixed max-sm top-5 right-5 rounded-full transition-colors duration-700 z-50",
-        "focus:outline-hidden"
+        "rounded-full transition-colors duration-300 p-2",
+        "focus:outline-none hover:bg-primary/10",
+        showLabel && "flex items-center gap-2",
+        className
       )}
+      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDarkMode ? (
         <Sun className="size-6 text-yellow-300" />
       ) : (
-        <Moon className="size-6 text-blue-900" />
+        <Moon className="size-6 text-blue-900 dark:text-blue-400" />
+      )}
+      {showLabel && (
+        <span className="text-foreground/80">
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </span>
       )}
     </button>
   );
