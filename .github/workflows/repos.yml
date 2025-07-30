@@ -1,33 +1,32 @@
-name: Repos
+name: Update Repos JSON
 
-on: 
+on:
   push:
-    # minutes / hour / day of the month / month of the year / day of the week
-    branches:  [main]
+    branches: [main]
+
 jobs:
-  build:
-    runs-on: ubuntu-lastest
-    
+  update-repos:
+    runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
-    steps: 
-      - name: Chceckout repo
+    steps:
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-        
-        
-      - name: Set-up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12' 
-          
-      - name: Run script
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run gitFetch.py
         run: python ./gitFetch.py
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Update repos info
-        
-                
