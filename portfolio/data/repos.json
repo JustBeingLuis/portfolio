@@ -1,0 +1,48 @@
+[
+  {
+    "name": "BiblioMatch",
+    "html_url": "https://github.com/JustBeingLuis/BiblioMatch",
+    "languages": [
+      "CSS",
+      "Python",
+      "HTML",
+      "JavaScript"
+    ],
+    "description": "Web application designed for the final project of the Software Engineering 1 course at UIS, 2025-1."
+  },
+  {
+    "name": "DeepWine",
+    "html_url": "https://github.com/JustBeingLuis/DeepWine",
+    "languages": [
+      "Jupyter Notebook"
+    ],
+    "description": "Final Project of Artificial Intelligence 1 - UIS - 20251 - B1"
+  },
+  {
+    "name": "EscapeFromHADES-Wiki-Web",
+    "html_url": "https://github.com/JustBeingLuis/EscapeFromHADES-Wiki-Web",
+    "languages": [
+      "CSS",
+      "HTML"
+    ],
+    "description": "Web page designed as the final course project for the Web Programming subject at the Industrial University of Santander (UIS), academic term 2024-2."
+  },
+  {
+    "name": "portfolio",
+    "html_url": "https://github.com/JustBeingLuis/portfolio",
+    "languages": [
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "description": null
+  },
+  {
+    "name": "Web-Scraper-Profesional-",
+    "html_url": "https://github.com/JustBeingLuis/Web-Scraper-Profesional-",
+    "languages": [
+      "Python"
+    ],
+    "description": "Automated scraping tool to extract product name, price, and image from websites with dynamic content. It automatically generates reports in PDF, Excel, and JSON formats. Ideal for analysis, monitoring, and reporting of online products."
+  }
+]
