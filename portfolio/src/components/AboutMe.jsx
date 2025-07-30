@@ -46,7 +46,7 @@ export const AboutMe = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">
-                    Computer Science Student
+                    Pursuing a Degree in Computer Science
                   </h3>
                   <p className="text-primary font-medium">
                     Universidad Industrial de Santander
@@ -55,11 +55,11 @@ export const AboutMe = () => {
               </div>
 
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I am a passionate computer science student with a strong
-                research vocation and an interdisciplinary vision that bridges
-                science and technology. I excel at combining technical analysis
-                with creative and leadership skills, actively participating in
-                research, development, and academic collaboration initiatives.
+                I am currently in Computer Science formation with a strong focus
+                on web development and applied research. I create modern user
+                interfaces using React, Tailwind CSS, SQL, and apply Python,
+                TensorFlow, PyTorch, and MATLAB in AI and data-driven research
+                projects.
               </p>
 
               {/* Quick Stats */}
@@ -151,15 +151,13 @@ export const AboutMe = () => {
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                    Computer Science Student
+                    B.Sc. Candidate in Computer Science
                   </h4>
                   <p className="text-primary font-medium mb-2">
                     Universidad Industrial de Santander
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Currently pursuing my degree with focus on software
-                    engineering, algorithms, and data structures. Active in
-                    research projects.
+                    Currently pursuing my degree in Computer Science.
                   </p>
                   <div className="mt-3 flex items-center gap-2">
                     <Calendar className="size-4 text-primary" />
@@ -188,11 +186,11 @@ export const AboutMe = () => {
                     Applied Researcher
                   </h4>
                   <p className="text-primary font-medium mb-2">
-                    AI & Optimization, Data Science
+                    AI & Optimization
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     Specialized in artificial intelligence, optimization
-                    problems, data science, and deep learning applications.
+                    problems, and deep learning applications.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <span className="px-2 py-1 text-xs bg-orange-500/10 text-orange-600 rounded-full border border-orange-500/20">

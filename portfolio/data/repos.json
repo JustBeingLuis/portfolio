@@ -8,7 +8,7 @@
       "HTML",
       "JavaScript"
     ],
-    "description": "Web application designed for the final project of the Software Engineering 1 course at UIS, 2025-1."
+    "description": "BiblioMatch UIS is a web platform developed with Django that allows students and users to manage, search for, and review books in an academic digital library. The system is designed to facilitate access to bibliographic resources, encourage interaction through reviews and ratings, and offer a modern and secure user management experience."
   },
   {
     "name": "DeepWine",
@@ -16,7 +16,7 @@
     "languages": [
       "Jupyter Notebook"
     ],
-    "description": "Final Project of Artificial Intelligence 1 - UIS - 20251 - B1"
+    "description": "DeepWine is a machine learning project that classifies red wine quality based on physicochemical attributes. It implements both supervised (Random Forest, DNN, Decision Tree) and unsupervised (K-Means, DBSCAN) models using a real-world dataset."
   },
   {
     "name": "EscapeFromHADES-Wiki-Web",
@@ -25,7 +25,7 @@
       "CSS",
       "HTML"
     ],
-    "description": "Web page designed as the final course project for the Web Programming subject at the Industrial University of Santander (UIS), academic term 2024-2."
+    "description": "This project is a wiki-style website inspired by the video game HADES, developed as the final project for the Web Programming course at the Industrial University of Santander (UIS), academic term 2024-2."
   },
   {
     "name": "portfolio",
@@ -33,6 +33,7 @@
     "languages": [
       "JavaScript",
       "CSS",
+      "Python",
       "HTML"
     ],
     "description": null

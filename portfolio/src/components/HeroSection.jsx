@@ -21,10 +21,7 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3 leading-relaxed px-2 sm:px-0">
-            I'm a computer science student passionate about web development and
-            applied research. I build modern interfaces with React, Tailwind
-            CSS, and SQL, and apply Python, TensorFlow, PyTorch, and MATLAB in
-            AI and data-driven research projects.
+            Combining modern web development with applied research.
           </p>
 
           <div className="pt-4 sm:pt-6 opacity-0 animate-fade-in-delay-4">
