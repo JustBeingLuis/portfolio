@@ -1,9 +1,9 @@
 name: Repos
 
 on: 
-  schedule:
+  push:
     # minutes / hour / day of the month / month of the year / day of the week
-    - cron: '0 0 15 * *'
+    branches:  [main]
 jobs:
   build:
     runs-on: ubuntu-lastest
