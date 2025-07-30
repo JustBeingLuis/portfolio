@@ -1,0 +1,33 @@
+name: Repos
+
+on: 
+  schedule:
+    # minutes / hour / day of the month / month of the year / day of the week
+    - cron: '0 0 15 * *'
+jobs:
+  build:
+    runs-on: ubuntu-lastest
+    
+    permissions:
+      contents: write
+
+    steps: 
+      - name: Chceckout repo
+        uses: actions/checkout@v4
+
+        
+        
+      - name: Set-up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' 
+          
+      - name: Run script
+        run: python ./gitFetch.py
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: Update repos info
+        
+                
