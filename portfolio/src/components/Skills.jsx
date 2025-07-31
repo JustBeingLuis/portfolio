@@ -32,19 +32,19 @@ const skills = [
     color: "yellow",
   },
   { name: "React", category: "frontend", level: "Intermediate", color: "cyan" },
-  {
+  /* {
     name: "TypeScript",
     category: "frontend",
     level: "Intermediate",
     color: "blue",
-  },
+  }, */
   {
     name: "Tailwind CSS",
     category: "frontend",
     level: "Advanced",
     color: "cyan",
   },
-  { name: "Next.js", category: "frontend", level: "Beginner", color: "gray" },
+  /* { name: "Next.js", category: "frontend", level: "Beginner", color: "gray" }, */
 
   // Backend & Databases
   {
@@ -64,6 +64,7 @@ const skills = [
   // Data Science & Research
   { name: "R", category: "research", level: "Intermediate", color: "blue" },
   { name: "MATLAB", category: "research", level: "Advanced", color: "orange" },
+  { name: "Python", category: "research", level: "Advanced", color: "green" },
 
   // Tools & Others
   { name: "Git/GitHub", category: "tools", level: "Advanced", color: "gray" },
