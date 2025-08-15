@@ -39,6 +39,14 @@
     "description": null
   },
   {
+    "name": "Robust-Illuminance-Drone-Detection-Using-Modulo-Images",
+    "html_url": "https://github.com/JustBeingLuis/Robust-Illuminance-Drone-Detection-Using-Modulo-Images",
+    "languages": [
+      "Jupyter Notebook"
+    ],
+    "description": "Here is the English translation of your text, with clear academic phrasing suitable for a GitHub or research context:  ---  This work proposes a drone detection technique under high illumination conditions using modulo images and a YOLOv11 model specifically fine-tuned on this type of data. High accuracy is achieved without the need for HDR reconst"
+  },
+  {
     "name": "Web-Scraper-Profesional-",
     "html_url": "https://github.com/JustBeingLuis/Web-Scraper-Profesional-",
     "languages": [
