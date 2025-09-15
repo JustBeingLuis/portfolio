@@ -28,6 +28,16 @@
     "description": "This project is a wiki-style website inspired by the video game HADES, developed as the final project for the Web Programming course at the Industrial University of Santander (UIS), academic term 2024-2."
   },
   {
+    "name": "Parcial-1-Ingenieria-de-software-2",
+    "html_url": "https://github.com/JustBeingLuis/Parcial-1-Ingenieria-de-software-2",
+    "languages": [
+      "TypeScript",
+      "CSS",
+      "JavaScript"
+    ],
+    "description": null
+  },
+  {
     "name": "portfolio",
     "html_url": "https://github.com/JustBeingLuis/portfolio",
     "languages": [
