@@ -49,6 +49,16 @@
     "description": null
   },
   {
+    "name": "Parcial3Software",
+    "html_url": "https://github.com/JustBeingLuis/Parcial3Software",
+    "languages": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": null
+  },
+  {
     "name": "portfolio",
     "html_url": "https://github.com/JustBeingLuis/portfolio",
     "languages": [
@@ -65,7 +75,7 @@
     "languages": [
       "Jupyter Notebook"
     ],
-    "description": "Here is the English translation of your text, with clear academic phrasing suitable for a GitHub or research context:  ---  This work proposes a drone detection technique under high illumination conditions using modulo images and a YOLOv11 model specifically fine-tuned on this type of data. High accuracy is achieved without the need for HDR reconst"
+    "description": null
   },
   {
     "name": "Web-Scraper-Profesional-",
