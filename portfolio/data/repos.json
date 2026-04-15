@@ -11,6 +11,18 @@
     "description": "BiblioMatch UIS is a web platform developed with Django that allows students and users to manage, search for, and review books in an academic digital library. The system is designed to facilitate access to bibliographic resources, encourage interaction through reviews and ratings, and offer a modern and secure user management experience."
   },
   {
+    "name": "CoworkingHub",
+    "html_url": "https://github.com/JustBeingLuis/CoworkingHub",
+    "languages": [
+      "Java",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Dockerfile"
+    ],
+    "description": "Sistema de Gestión de Reservas para Coworking"
+  },
+  {
     "name": "DeepWine",
     "html_url": "https://github.com/JustBeingLuis/DeepWine",
     "languages": [
@@ -78,12 +90,6 @@
     "description": null
   },
   {
-    "name": "Sistema-de-Gesti-n-de-Reservas-para-Coworking",
-    "html_url": "https://github.com/JustBeingLuis/Sistema-de-Gesti-n-de-Reservas-para-Coworking",
-    "languages": [],
-    "description": "Sistema de Gestión de Reservas para Coworking"
-  },
-  {
     "name": "TaskFlow",
     "html_url": "https://github.com/JustBeingLuis/TaskFlow",
     "languages": [
@@ -102,6 +108,14 @@
       "Dockerfile"
     ],
     "description": null
+  },
+  {
+    "name": "Trabajo-de-grado",
+    "html_url": "https://github.com/JustBeingLuis/Trabajo-de-grado",
+    "languages": [
+      "Python"
+    ],
+    "description": "Repositorio con punto de referencia del problema de reconstrucción."
   },
   {
     "name": "Web-Scraper-Profesional-",
