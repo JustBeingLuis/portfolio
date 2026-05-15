@@ -14,8 +14,8 @@
     "name": "CoworkingHub",
     "html_url": "https://github.com/JustBeingLuis/CoworkingHub",
     "languages": [
-      "Java",
       "JavaScript",
+      "Java",
       "HTML",
       "CSS",
       "Dockerfile"
