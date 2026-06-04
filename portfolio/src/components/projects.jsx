@@ -1,161 +1,163 @@
-import reposData from "@/../data/repos.json"; // Importa el JSON
 import { useState } from "react";
+import reposData from "@/../data/repos.json";
+import { FaGithub } from "react-icons/fa";
+import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { cn } from "@/lib/utils";
 
-// Función para obtener colores específicos por lenguaje
 const getLanguageColor = (lang) => {
   const colors = {
-    JavaScript: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
-    TypeScript: "bg-blue-500/10 text-blue-600 border-blue-500/20",
-    Python: "bg-green-500/10 text-green-600 border-green-500/20",
-    HTML: "bg-orange-500/10 text-orange-600 border-orange-500/20",
-    CSS: "bg-blue-400/10 text-blue-500 border-blue-400/20",
-    React: "bg-cyan-500/10 text-cyan-600 border-cyan-500/20",
-    Vue: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
-    Java: "bg-red-500/10 text-red-600 border-red-500/20",
-    "C++": "bg-purple-500/10 text-purple-600 border-purple-500/20",
-    "C#": "bg-violet-500/10 text-violet-600 border-violet-500/20",
-    PHP: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
-    Ruby: "bg-red-400/10 text-red-500 border-red-400/20",
-    Go: "bg-cyan-400/10 text-cyan-500 border-cyan-400/20",
-    Rust: "bg-orange-600/10 text-orange-700 border-orange-600/20",
-    Swift: "bg-orange-500/10 text-orange-600 border-orange-500/20",
-    Kotlin: "bg-purple-600/10 text-purple-700 border-purple-600/20",
-    Dart: "bg-blue-600/10 text-blue-700 border-blue-600/20",
-    SCSS: "bg-pink-500/10 text-pink-600 border-pink-500/20",
-    Less: "bg-blue-700/10 text-blue-800 border-blue-700/20",
-    Sass: "bg-pink-500/10 text-pink-600 border-pink-500/20",
+    JavaScript: "bg-yellow-500",
+    TypeScript: "bg-blue-500",
+    Python: "bg-emerald-500",
+    HTML: "bg-orange-500",
+    CSS: "bg-blue-400",
+    Java: "bg-red-500",
+    Dockerfile: "bg-sky-500",
+    "Jupyter Notebook": "bg-orange-400",
   };
-  return colors[lang] || "bg-primary/10 text-primary border-primary/20";
+  return colors[lang] || "bg-zinc-400";
 };
 
+const featuredNames = ["BiblioMatch", "DeepWine", "CoworkingHub"];
+
+const INITIAL_COUNT = 3;
+
 export const Projects = () => {
-  const [repos] = useState(reposData); // Usa el JSON como estado
+  const [showAll, setShowAll] = useState(false);
+  const { ref: sectionRef, isVisible } = useScrollReveal();
+
+  // Sort: featured first
+  const sortedRepos = [...reposData].sort((a, b) => {
+    const aFeatured = featuredNames.includes(a.name);
+    const bFeatured = featuredNames.includes(b.name);
+    if (aFeatured && !bFeatured) return -1;
+    if (!aFeatured && bFeatured) return 1;
+    return 0;
+  });
+
+  const visibleRepos = showAll ? sortedRepos : sortedRepos.slice(0, INITIAL_COUNT);
+  const remaining = sortedRepos.length - INITIAL_COUNT;
 
   return (
     <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-6xl">
+      <div
+        ref={sectionRef}
+        className={cn(
+          "container mx-auto max-w-5xl transition-all duration-700",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        )}
+      >
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My{" "}
-            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Projects
-            </span>
+          <h2 className="section-heading mb-4">
+            My <span className="text-primary">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
+          <p className="text-lg text-muted max-w-2xl mx-auto">
             A collection of projects that showcase my skills and passion for
             development
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {repos.map((repo, index) => (
-            <div
-              key={repo.name}
-              className="group relative bg-card/50 backdrop-blur-sm border border-border/40 rounded-xl p-6 
-                       shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 
-                       transform hover:scale-[1.02] hover:-translate-y-2 overflow-hidden"
-              style={{
-                animationDelay: `${index * 100}ms`,
-                animation: "fade-in 0.6s ease-out forwards",
-              }}
-            >
-              {/* Gradient overlay */}
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {visibleRepos.map((repo) => {
+            const isFeatured = featuredNames.includes(repo.name);
 
-              {/* Border glow effect */}
+            return (
               <div
-                className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/20 via-transparent to-primary/20 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"
-              />
-
-              <div className="relative z-10">
-                {/* Project title */}
+                key={repo.name}
+                className={cn(
+                  "group card-surface p-6 flex flex-col hover:border-primary/40 hover:-translate-y-1",
+                  isFeatured && "border-primary/20"
+                )}
+              >
+                {/* Header */}
                 <div className="mb-4">
-                  <h3
-                    className="text-xl font-bold text-foreground group-hover:text-primary 
-                               transition-colors duration-300 capitalize"
-                  >
-                    {repo.name.replace(/-/g, " ")}
-                  </h3>
-                  <div
-                    className="w-full h-0.5 bg-gradient-to-r from-primary/40 to-transparent 
-                                scale-x-0 group-hover:scale-x-100 transition-transform duration-500 mt-2"
-                  />
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                      {repo.name.replace(/-/g, " ")}
+                    </h3>
+                    {isFeatured && (
+                      <span className="text-[10px] font-mono text-primary border border-primary/30 px-1.5 py-0.5 rounded">
+                        Featured
+                      </span>
+                    )}
+                  </div>
+                  <div className="w-8 h-px bg-border group-hover:bg-primary group-hover:w-12 transition-all duration-500" />
                 </div>
 
                 {/* Description */}
-                <div className="mb-6 flex-grow">
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    {repo.description ||
-                      "This project does not have a description available."}
-                  </p>
-                </div>
+                <p className="text-sm text-muted leading-relaxed line-clamp-3 mb-5 flex-grow">
+                  {repo.description ||
+                    "This project does not have a description available."}
+                </p>
 
-                {/* Language indicators */}
+                {/* Languages */}
                 {repo.languages && repo.languages.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {repo.languages.slice(0, 4).map((language, langIndex) => (
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5">
+                    {repo.languages.slice(0, 4).map((language) => (
+                      <span
+                        key={language}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-muted"
+                      >
                         <span
-                          key={langIndex}
-                          className={`inline-block px-2 py-1 text-xs font-medium rounded-full border transition-all duration-300 hover:scale-110 ${getLanguageColor(
-                            language
-                          )}`}
-                          title={language}
-                        >
-                          {language}
-                        </span>
-                      ))}
-                      {repo.languages.length > 4 && (
-                        <span
-                          className="inline-block px-2 py-1 text-xs font-medium bg-gray-500/10 text-gray-600 border border-gray-500/20 rounded-full cursor-help"
-                          title={`Otros lenguajes: ${repo.languages
-                            .slice(4)
-                            .join(", ")}`}
-                        >
-                          +{repo.languages.length - 4}
-                        </span>
-                      )}
-                    </div>
+                          className={cn(
+                            "w-2 h-2 rounded-full",
+                            getLanguageColor(language)
+                          )}
+                        />
+                        {language}
+                      </span>
+                    ))}
+                    {repo.languages.length > 4 && (
+                      <span className="text-xs font-mono text-muted">
+                        +{repo.languages.length - 4}
+                      </span>
+                    )}
                   </div>
                 )}
 
-                {/* Action button */}
-                <div className="flex items-center justify-between">
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-primary 
-                             border border-primary/30 rounded-lg hover:bg-primary hover:text-primary-foreground 
-                             transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20"
-                  >
-                    <svg
-                      className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                    Ver Repositorio
-                  </a>
-                </div>
+                {/* Action */}
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary transition-colors duration-300"
+                >
+                  <FaGithub className="size-4" />
+                  View on GitHub
+                  <ExternalLink className="size-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {/* Show More / Show Less */}
+        {sortedRepos.length > INITIAL_COUNT && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-muted border border-border rounded-lg
+                         hover:border-primary hover:text-primary transition-all duration-300"
+            >
+              {showAll ? (
+                <>
+                  Show Less
+                  <ChevronUp className="size-4" />
+                </>
+              ) : (
+                <>
+                  Show More
+                  <span className="text-xs text-muted/60">({remaining})</span>
+                  <ChevronDown className="size-4" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
