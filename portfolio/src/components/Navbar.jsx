@@ -2,16 +2,19 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSelector } from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { key: "home", href: "#hero" },
+  { key: "about", href: "#about" },
+  { key: "skills", href: "#skills" },
+  { key: "projects", href: "#projects" },
+  { key: "contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#hero");
@@ -83,7 +86,7 @@ export const Navbar = () => {
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <a
-              key={item.name}
+              key={item.key}
               href={item.href}
               className={cn(
                 "relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg",
@@ -92,19 +95,21 @@ export const Navbar = () => {
                   : "text-muted hover:text-foreground"
               )}
             >
-              {item.name}
+              {t(`navbar.${item.key}`)}
               {activeSection === item.href && (
                 <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
               )}
             </a>
           ))}
-          <div className="ml-2 pl-2 border-l border-border">
+          <div className="ml-2 pl-2 border-l border-border flex items-center gap-1">
+            <LanguageSelector />
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile nav toggle */}
         <div className="md:hidden flex items-center gap-1 relative z-50">
+          <LanguageSelector />
           <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -129,7 +134,7 @@ export const Navbar = () => {
           <div className="flex flex-col items-center gap-2 w-full max-w-xs px-4">
             {navItems.map((item, index) => (
               <a
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "w-full text-center py-3 px-6 text-lg font-medium rounded-lg transition-all duration-300",
@@ -144,7 +149,7 @@ export const Navbar = () => {
                 }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item.name}
+                {t(`navbar.${item.key}`)}
               </a>
             ))}
           </div>

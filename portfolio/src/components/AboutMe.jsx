@@ -11,16 +11,19 @@ import {
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { cn } from "@/lib/utils";
 
-const competencies = [
-  "Problem Solving",
-  "Research",
-  "Leadership",
-  "Team Collaboration",
-  "Critical Thinking",
-  "Innovation",
+import { useTranslation } from "react-i18next";
+
+const competenciesKeys = [
+  "problemSolving",
+  "research",
+  "leadership",
+  "teamCollab",
+  "criticalThinking",
+  "innovation",
 ];
 
 export const AboutMe = () => {
+  const { t } = useTranslation();
   const { ref: sectionRef, isVisible } = useScrollReveal();
 
   return (
@@ -35,11 +38,11 @@ export const AboutMe = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
-            About <span className="text-primary">Me</span>
+            {t('about.title1')} <span className="text-primary">{t('about.title2')}</span>
           </h2>
           <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Discover my journey, passion, and expertise in technology
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -51,29 +54,24 @@ export const AboutMe = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-foreground mb-1">
-                Computer Science Professional
+                {t('about.professionTitle')}
               </h3>
               <p className="text-primary font-medium text-sm mb-4">
-                Universidad Industrial de Santander
+                {t('about.university')}
               </p>
 
               <p className="text-muted leading-relaxed mb-6 max-w-3xl">
-                Computer Science professional with a strong focus on web
-                development and applied research. Currently a candidate for a
-                Master's degree in Computer Science. I create modern user
-                interfaces using React, Tailwind CSS, SQL, and apply Python,
-                TensorFlow, PyTorch, and MATLAB in AI and data-driven research
-                projects.
+                {t('about.description')}
               </p>
 
               <div className="flex flex-wrap gap-6 mb-6 text-sm text-muted">
                 <div className="flex items-center gap-2">
                   <MapPin className="size-4 text-primary" />
-                  <span>Bucaramanga, Colombia</span>
+                  <span>{t('about.location')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="size-4 text-primary" />
-                  <span>Available for work</span>
+                  <span>{t('about.available')}</span>
                 </div>
               </div>
 
@@ -82,7 +80,7 @@ export const AboutMe = () => {
                   href="#contact"
                   className="accent-button inline-flex items-center justify-center gap-2 text-sm"
                 >
-                  Contact Me
+                  {t('about.contactBtn')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -94,7 +92,7 @@ export const AboutMe = () => {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground hover:border-primary hover:text-primary transition-all duration-300 font-medium text-sm"
                 >
                   <Download className="w-4 h-4" />
-                  Download CV
+                  {t('about.downloadBtn')}
                 </a>
               </div>
 
@@ -108,13 +106,13 @@ export const AboutMe = () => {
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold text-foreground">
-                        M.Sc. Candidate in Computer Science
+                        {t('about.msc')}
                       </h4>
                       <p className="text-xs text-muted mt-0.5">
-                        Universidad Industrial de Santander
+                        {t('about.university')}
                       </p>
                       <span className="inline-block mt-2.5 text-[11px] font-mono px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
-                        2026 - Present
+                        2026 - {t('about.present')}
                       </span>
                     </div>
                   </div>
@@ -128,10 +126,10 @@ export const AboutMe = () => {
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold text-foreground">
-                        B.Sc. in Computer Science
+                        {t('about.bsc')}
                       </h4>
                       <p className="text-xs text-muted mt-0.5">
-                        Universidad Industrial de Santander
+                        {t('about.university')}
                       </p>
                       <span className="inline-block mt-2.5 text-[11px] font-mono px-2 py-0.5 rounded bg-muted-foreground/10 text-muted border border-border/50">
                         2022 - 2026
@@ -143,15 +141,15 @@ export const AboutMe = () => {
                 {/* Cell 3: Core Competencies */}
                 <div className="p-5 rounded-xl border border-border/40 bg-background/20 hover:border-primary/30 transition-all duration-300">
                   <h4 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-                    Core Competencies
+                    {t('about.coreCompetencies')}
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {competencies.map((skill) => (
+                    {competenciesKeys.map((key) => (
                       <span
-                        key={skill}
+                        key={key}
                         className="px-2 py-1 text-xs text-muted border border-border/50 rounded-md bg-background/30 hover:border-primary/30 hover:text-primary transition-all duration-300 cursor-default"
                       >
-                        {skill}
+                        {t(`about.competencies.${key}`)}
                       </span>
                     ))}
                   </div>
@@ -160,7 +158,7 @@ export const AboutMe = () => {
                 {/* Cell 4: Experience / Focus Areas */}
                 <div className="p-5 rounded-xl border border-border/40 bg-background/20 hover:border-primary/30 transition-all duration-300">
                   <h4 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-                    Focus Areas & Roles
+                    {t('about.focusAreas')}
                   </h4>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
@@ -168,8 +166,8 @@ export const AboutMe = () => {
                         <FlaskConical className="size-3.5" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-xs font-bold text-foreground">Applied Researcher</p>
-                        <p className="text-[10px] text-muted font-mono">AI & ML • Optimization</p>
+                        <p className="text-xs font-bold text-foreground">{t('hero.roles.research')}</p>
+                        <p className="text-[10px] text-muted font-mono">{t('about.researchSub')}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -177,8 +175,8 @@ export const AboutMe = () => {
                         <Briefcase className="size-3.5" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-xs font-bold text-foreground">Full Stack Developer</p>
-                        <p className="text-[10px] text-muted font-mono">React • Python • Tailwind</p>
+                        <p className="text-xs font-bold text-foreground">{t('hero.roles.dev')}</p>
+                        <p className="text-[10px] text-muted font-mono">{t('about.devSub')}</p>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,107 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "status": "Disponible para trabajar",
+    "roles": {
+      "dev": "Desarrollador Full Stack",
+      "research": "Investigador Aplicado",
+      "ai": "Entusiasta de IA"
+    },
+    "viewWork": "Ver mi trabajo",
+    "scroll": "Deslizar"
+  },
+  "about": {
+    "title1": "Sobre",
+    "title2": "Mí",
+    "subtitle": "Descubre mi trayectoria, pasión y experiencia en tecnología",
+    "professionTitle": "Profesional en Ciencias de la Computación",
+    "university": "Universidad Industrial de Santander",
+    "description": "Profesional en Ciencias de la Computación con un fuerte enfoque en desarrollo web e investigación aplicada. Actualmente candidato a Magíster en Ciencias de la Computación. Creo interfaces de usuario modernas usando React, Tailwind CSS, SQL, y aplico Python, TensorFlow, PyTorch y MATLAB en proyectos de investigación de IA basados en datos.",
+    "location": "Bucaramanga, Colombia",
+    "available": "Disponible para trabajar",
+    "contactBtn": "Contáctame",
+    "downloadBtn": "Descargar CV",
+    "msc": "Candidato a Magíster en Ciencias de la Computación",
+    "present": "Actualidad",
+    "bsc": "Ingeniero de Sistemas",
+    "coreCompetencies": "Competencias Clave",
+    "focusAreas": "Áreas de Enfoque y Roles",
+    "researchSub": "IA & ML • Optimización",
+    "devSub": "React • Python • Tailwind",
+    "competencies": {
+      "problemSolving": "Resolución de Problemas",
+      "research": "Investigación",
+      "leadership": "Liderazgo",
+      "teamCollab": "Colaboración en Equipo",
+      "criticalThinking": "Pensamiento Crítico",
+      "innovation": "Innovación"
+    }
+  },
+  "skills": {
+    "title1": "Mis",
+    "title2": "Habilidades",
+    "subtitle": "Tecnologías y herramientas que uso para crear soluciones completas",
+    "filters": {
+      "all": "Todas",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "research": "Investigación",
+      "tools": "Herramientas"
+    },
+    "categories": {
+      "frontend": {
+        "title": "Desarrollo Frontend",
+        "description": "Creación de interfaces modernas y responsivas"
+      },
+      "backend": {
+        "title": "Backend y Bases de Datos",
+        "description": "Desarrollo del lado del servidor y gestión de datos"
+      },
+      "research": {
+        "title": "Ciencia de Datos e Investigación",
+        "description": "Análisis de datos y computación científica"
+      },
+      "tools": {
+        "title": "Herramientas y Flujo",
+        "description": "Herramientas de desarrollo y diseño"
+      }
+    },
+    "levels": {
+      "Advanced": "Avanzado",
+      "Intermediate": "Intermedio"
+    }
+  },
+  "projects": {
+    "title1": "Mis",
+    "title2": "Proyectos",
+    "subtitle": "Una colección de proyectos que muestran mis habilidades y pasión por el desarrollo",
+    "featured": "Destacado",
+    "noDescription": "Este proyecto no tiene una descripción disponible.",
+    "viewGithub": "Ver en GitHub",
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos"
+  },
+  "contact": {
+    "title1": "Ponte en",
+    "title2": "Contacto",
+    "subtitle": "¿Tienes alguna pregunta o quieres trabajar juntos? Me encantaría escucharte.",
+    "reachMe": "Contáctame en",
+    "sendEmail": "Enviar un Correo",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "basedIn": "Ubicado en",
+    "locationValue": "Bucaramanga, Colombia",
+    "remote": "— Abierto a oportunidades remotas a nivel mundial",
+    "publications": "Publicaciones"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Desarrollado con React, Tailwind CSS y Vite"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "status": "Available for Work",
+    "roles": {
+      "dev": "Full Stack Developer",
+      "research": "Applied Researcher",
+      "ai": "AI Enthusiast"
+    },
+    "viewWork": "View My Work",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "title1": "About",
+    "title2": "Me",
+    "subtitle": "Discover my journey, passion, and expertise in technology",
+    "professionTitle": "Computer Science Professional",
+    "university": "Universidad Industrial de Santander",
+    "description": "Computer Science professional with a strong focus on web development and applied research. Currently a candidate for a Master's degree in Computer Science. I create modern user interfaces using React, Tailwind CSS, SQL, and apply Python, TensorFlow, PyTorch, and MATLAB in AI and data-driven research projects.",
+    "location": "Bucaramanga, Colombia",
+    "available": "Available for work",
+    "contactBtn": "Contact Me",
+    "downloadBtn": "Download CV",
+    "msc": "M.Sc. Candidate in Computer Science",
+    "present": "Present",
+    "bsc": "B.Sc. in Computer Science",
+    "coreCompetencies": "Core Competencies",
+    "focusAreas": "Focus Areas & Roles",
+    "researchSub": "AI & ML • Optimization",
+    "devSub": "React • Python • Tailwind",
+    "competencies": {
+      "problemSolving": "Problem Solving",
+      "research": "Research",
+      "leadership": "Leadership",
+      "teamCollab": "Team Collaboration",
+      "criticalThinking": "Critical Thinking",
+      "innovation": "Innovation"
+    }
+  },
+  "skills": {
+    "title1": "My",
+    "title2": "Skills",
+    "subtitle": "Technologies and tools I use to create complete solutions",
+    "filters": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "research": "Research",
+      "tools": "Tools"
+    },
+    "categories": {
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Creating modern and responsive user interfaces"
+      },
+      "backend": {
+        "title": "Backend & Databases",
+        "description": "Server-side development and data management"
+      },
+      "research": {
+        "title": "Data Science & Research",
+        "description": "Data analysis and scientific computing"
+      },
+      "tools": {
+        "title": "Tools & Workflow",
+        "description": "Development and design tools"
+      }
+    },
+    "levels": {
+      "Advanced": "Advanced",
+      "Intermediate": "Intermediate"
+    }
+  },
+  "projects": {
+    "title1": "My",
+    "title2": "Projects",
+    "subtitle": "A collection of projects that showcase my skills and passion for development",
+    "featured": "Featured",
+    "noDescription": "This project does not have a description available.",
+    "viewGithub": "View on GitHub",
+    "showMore": "Show More",
+    "showLess": "Show Less"
+  },
+  "contact": {
+    "title1": "Let's",
+    "title2": "Connect",
+    "subtitle": "Have a project in mind or just want to say hello? I'm always open to discussing new opportunities and ideas.",
+    "reachMe": "Reach me at",
+    "sendEmail": "Send an Email",
+    "copy": "Copy",
+    "copied": "Copied",
+    "basedIn": "Based in",
+    "locationValue": "Bucaramanga, Colombia",
+    "remote": "— Open to remote opportunities worldwide",
+    "publications": "Publications"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with React, Tailwind CSS & Vite"
+  }
+}

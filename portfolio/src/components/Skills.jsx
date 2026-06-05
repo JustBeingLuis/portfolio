@@ -22,6 +22,7 @@ import {
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const skills = [
   { name: "HTML", category: "frontend", level: "Advanced" },
@@ -44,23 +45,15 @@ const skills = [
 
 const categoryInfo = {
   frontend: {
-    title: "Frontend Development",
-    description: "Creating modern and responsive user interfaces",
     icon: Code,
   },
   backend: {
-    title: "Backend & Databases",
-    description: "Server-side development and data management",
     icon: Server,
   },
   research: {
-    title: "Data Science & Research",
-    description: "Data analysis and scientific computing",
     icon: FlaskConical,
   },
   tools: {
-    title: "Tools & Workflow",
-    description: "Development and design tools",
     icon: Wrench,
   },
 };
@@ -82,14 +75,15 @@ const iconMap = {
 };
 
 const filters = [
-  { key: "all", label: "All" },
-  { key: "frontend", label: "Frontend" },
-  { key: "backend", label: "Backend" },
-  { key: "research", label: "Research" },
-  { key: "tools", label: "Tools" },
+  { key: "all" },
+  { key: "frontend" },
+  { key: "backend" },
+  { key: "research" },
+  { key: "tools" },
 ];
 
 export const Skills = () => {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("all");
   const { ref: sectionRef, isVisible } = useScrollReveal();
 
@@ -118,11 +112,11 @@ export const Skills = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
-            My <span className="text-primary">Skills</span>
+            {t('skills.title1')} <span className="text-primary">{t('skills.title2')}</span>
           </h2>
           <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Technologies and tools I use to create complete solutions
+            {t('skills.subtitle')}
           </p>
         </div>
 
@@ -140,7 +134,7 @@ export const Skills = () => {
                     : "text-muted hover:text-foreground"
                 )}
               >
-                {filter.label}
+                {t(`skills.filters.${filter.key}`)}
               </button>
             ))}
           </div>
@@ -162,9 +156,9 @@ export const Skills = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-foreground">
-                        {info.title}
+                        {t(`skills.categories.${category}.title`)}
                       </h3>
-                      <p className="text-sm text-muted">{info.description}</p>
+                      <p className="text-sm text-muted">{t(`skills.categories.${category}.description`)}</p>
                     </div>
                   </div>
 
@@ -188,7 +182,7 @@ export const Skills = () => {
                               {skill.name}
                             </h4>
                             <span className="text-xs text-muted font-mono">
-                              {skill.level}
+                              {t(`skills.levels.${skill.level}`)}
                             </span>
                           </div>
                         </div>

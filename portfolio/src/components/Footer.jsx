@@ -1,14 +1,16 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { key: "home", href: "#hero" },
+  { key: "about", href: "#about" },
+  { key: "skills", href: "#skills" },
+  { key: "projects", href: "#projects" },
+  { key: "contact", href: "#contact" },
 ];
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -24,11 +26,11 @@ export const Footer = () => {
           <div className="flex items-center gap-6">
             {navLinks.map((link) => (
               <a
-                key={link.name}
+                key={link.key}
                 href={link.href}
                 className="text-xs text-muted hover:text-foreground transition-colors duration-300"
               >
-                {link.name}
+                {t(`navbar.${link.key}`)}
               </a>
             ))}
           </div>
@@ -59,10 +61,10 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-6 pt-6 border-t border-border text-center">
           <p className="text-xs text-muted">
-            &copy; {currentYear} Luis Toscano-Palomino. All rights reserved.
+            &copy; {currentYear} Luis Toscano-Palomino. {t('footer.rights')}
           </p>
           <p className="text-xs text-muted/60 mt-1">
-            Built with React, Tailwind CSS & Vite
+            {t('footer.builtWith')}
           </p>
         </div>
       </div>

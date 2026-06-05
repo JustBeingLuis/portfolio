@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const getLanguageColor = (lang) => {
   const colors = {
@@ -24,6 +25,7 @@ const featuredNames = ["BiblioMatch", "DeepWine", "CoworkingHub"];
 const INITIAL_COUNT = 3;
 
 export const Projects = () => {
+  const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
   const { ref: sectionRef, isVisible } = useScrollReveal();
 
@@ -51,12 +53,11 @@ export const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
-            My <span className="text-primary">Projects</span>
+            {t('projects.title1')} <span className="text-primary">{t('projects.title2')}</span>
           </h2>
           <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            A collection of projects that showcase my skills and passion for
-            development
+            {t('projects.subtitle')}
           </p>
         </div>
 
@@ -81,7 +82,7 @@ export const Projects = () => {
                     </h3>
                     {isFeatured && (
                       <span className="text-[10px] font-mono text-primary border border-primary/30 px-1.5 py-0.5 rounded">
-                        Featured
+                        {t('projects.featured')}
                       </span>
                     )}
                   </div>
@@ -90,8 +91,7 @@ export const Projects = () => {
 
                 {/* Description */}
                 <p className="text-sm text-muted leading-relaxed line-clamp-3 mb-5 flex-grow">
-                  {repo.description ||
-                    "This project does not have a description available."}
+                  {repo.description || t('projects.noDescription')}
                 </p>
 
                 {/* Languages */}
@@ -127,7 +127,7 @@ export const Projects = () => {
                   className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary transition-colors duration-300"
                 >
                   <FaGithub className="size-4" />
-                  View on GitHub
+                  {t('projects.viewGithub')}
                   <ExternalLink className="size-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </div>
@@ -145,12 +145,12 @@ export const Projects = () => {
             >
               {showAll ? (
                 <>
-                  Show Less
+                  {t('projects.showLess')}
                   <ChevronUp className="size-4" />
                 </>
               ) : (
                 <>
-                  Show More
+                  {t('projects.showMore')}
                   <span className="text-xs text-muted/60">({remaining})</span>
                   <ChevronDown className="size-4" />
                 </>

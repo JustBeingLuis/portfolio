@@ -4,10 +4,12 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { GoogleScholarIcon } from "@/components/icons/GoogleScholarIcon";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const EMAIL = "luismariotoscanopalomino@gmail.com";
 
 export const Contact = () => {
+  const { t } = useTranslation();
   const { ref: sectionRef, isVisible } = useScrollReveal();
   const [copied, setCopied] = useState(false);
 
@@ -34,12 +36,11 @@ export const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
-            Let's <span className="text-primary">Connect</span>
+            {t('contact.title1')} <span className="text-primary">{t('contact.title2')}</span>
           </h2>
           <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted max-w-xl mx-auto">
-            Have a project in mind or just want to say hello? I'm always open to
-            discussing new opportunities and ideas.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -49,7 +50,7 @@ export const Contact = () => {
             <Mail className="size-7 text-primary" />
           </div>
           <p className="text-sm text-muted uppercase tracking-wider font-semibold mb-3">
-            Reach me at
+            {t('contact.reachMe')}
           </p>
           <a
             href={`mailto:${EMAIL}`}
@@ -62,7 +63,7 @@ export const Contact = () => {
               href={`mailto:${EMAIL}`}
               className="accent-button inline-flex items-center gap-2 text-sm"
             >
-              Send an Email
+              {t('contact.sendEmail')}
               <ArrowUpRight className="size-4" />
             </a>
             <button
@@ -77,12 +78,12 @@ export const Contact = () => {
               {copied ? (
                 <>
                   <Check className="size-4" />
-                  Copied
+                  {t('contact.copied')}
                 </>
               ) : (
                 <>
                   <Copy className="size-4" />
-                  Copy
+                  {t('contact.copy')}
                 </>
               )}
             </button>
@@ -129,7 +130,7 @@ export const Contact = () => {
             <GoogleScholarIcon className="size-6 text-muted group-hover:text-primary transition-colors duration-300 mx-auto mb-3" />
             <span className="text-sm font-semibold text-foreground block">Scholar</span>
             <span className="text-xs text-muted mt-1 block group-hover:text-primary transition-colors duration-300">
-              Publications
+              {t('contact.publications')}
             </span>
           </a>
 
@@ -150,10 +151,10 @@ export const Contact = () => {
         <div className="card-surface px-6 py-4 flex items-center justify-center gap-3">
           <MapPin className="size-4 text-primary shrink-0" />
           <span className="text-sm text-muted">
-            Based in <span className="text-foreground font-medium">Bucaramanga, Colombia</span>
+            {t('contact.basedIn')} <span className="text-foreground font-medium">{t('contact.locationValue')}</span>
           </span>
           <span className="text-xs text-muted hidden sm:inline">
-            &mdash; Open to remote opportunities worldwide
+            {t('contact.remote')}
           </span>
         </div>
       </div>

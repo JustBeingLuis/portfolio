@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { ArrowDown } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { GoogleScholarIcon } from "@/components/icons/GoogleScholarIcon";
-
-const roles = [
-  "Full Stack Developer",
-  "Applied Researcher",
-  "AI Enthusiast",
-];
+import { useTranslation } from "react-i18next";
 
 export const HeroSection = () => {
+  const { t } = useTranslation();
+  
+  const roles = [
+    t('hero.roles.dev'),
+    t('hero.roles.research'),
+    t('hero.roles.ai')
+  ];
+
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -50,7 +53,7 @@ export const HeroSection = () => {
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              Available for Work
+              {t('hero.status')}
             </span>
           </div>
 
@@ -78,7 +81,7 @@ export const HeroSection = () => {
               href="#projects"
               className="accent-button inline-block text-sm sm:text-base"
             >
-              View My Work
+              {t('hero.viewWork')}
             </a>
           </div>
 
@@ -118,7 +121,7 @@ export const HeroSection = () => {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
         <span className="text-xs text-muted font-medium tracking-widest uppercase">
-          Scroll
+          {t('hero.scroll')}
         </span>
         <ArrowDown className="size-4 text-muted" />
       </div>
