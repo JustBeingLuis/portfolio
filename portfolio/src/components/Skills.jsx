@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 import { Code, Server, FlaskConical, Wrench } from "lucide-react";
 import {
   FaCss3Alt,
@@ -20,9 +21,18 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { WindowTile } from "@/components/WindowTile";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+
+/**
+ * Skills — Mosaic grid of skill tiles inside a window tile.
+ *
+ * Skills are displayed as individual cards with their icons.
+ * "Advanced" skills get a subtle primary border glow.
+ * Filter tabs animate the grid with Framer Motion layout animations.
+ * Category headers look like terminal prompts: `$ ls frontend/`
+ */
 
 const skills = [
   { name: "HTML", category: "frontend", level: "Advanced" },
@@ -44,18 +54,10 @@ const skills = [
 ];
 
 const categoryInfo = {
-  frontend: {
-    icon: Code,
-  },
-  backend: {
-    icon: Server,
-  },
-  research: {
-    icon: FlaskConical,
-  },
-  tools: {
-    icon: Wrench,
-  },
+  frontend: { icon: Code },
+  backend: { icon: Server },
+  research: { icon: FlaskConical },
+  tools: { icon: Wrench },
 };
 
 const iconMap = {
@@ -85,7 +87,6 @@ const filters = [
 export const Skills = () => {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("all");
-  const { ref: sectionRef, isVisible } = useScrollReveal();
 
   const groupedSkills = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -101,28 +102,38 @@ export const Skills = () => {
       : { [activeFilter]: groupedSkills[activeFilter] };
 
   return (
-    <section id="skills" className="py-24 px-4 relative">
-      <div
-        ref={sectionRef}
-        className={cn(
-          "container mx-auto max-w-5xl transition-all duration-700",
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        )}
-      >
+    <section id="skills" className="py-20 sm:py-24 px-4 relative">
+      <div className="container mx-auto max-w-5xl">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-primary/80 border border-primary/20 rounded-full bg-primary/5 mb-6">
+            <span className="text-muted">$</span> ls skills/
+          </div>
           <h2 className="section-heading mb-4">
-            {t('skills.title1')} <span className="text-primary">{t('skills.title2')}</span>
+            {t("skills.title1")}{" "}
+            <span className="text-primary">{t("skills.title2")}</span>
           </h2>
-          <div className="w-12 h-0.5 bg-primary mx-auto mb-6" />
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            {t('skills.subtitle')}
+          <div className="w-12 h-0.5 bg-primary mx-auto mb-4" />
+          <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto">
+            {t("skills.subtitle")}
           </p>
-        </div>
+        </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center gap-1 p-1 bg-card border border-border rounded-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="flex justify-center mb-10"
+        >
+          <div className="inline-flex items-center gap-1 p-1 window-tile rounded-lg">
             {filters.map((filter) => (
               <button
                 key={filter.key}
@@ -138,62 +149,94 @@ export const Skills = () => {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Skills Categories */}
-        <div className="space-y-12">
-          {Object.entries(filteredSkills).map(
-            ([category, categorySkills]) => {
-              const info = categoryInfo[category];
-              const CategoryIcon = info.icon;
-
-              return (
-                <div key={category}>
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <CategoryIcon className="size-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-foreground">
-                        {t(`skills.categories.${category}.title`)}
-                      </h3>
-                      <p className="text-sm text-muted">{t(`skills.categories.${category}.description`)}</p>
-                    </div>
-                  </div>
-
-                  {/* Skills Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {categorySkills.map((skill) => {
-                      const Icon = iconMap[skill.name];
+        {/* Skills Grid — wrapped in a window tile */}
+        <WindowTile title="skills.config" delay={0.15} noPadding>
+          <div className="p-4 sm:p-6">
+            <LayoutGroup>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeFilter}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                  className="space-y-8"
+                >
+                  {Object.entries(filteredSkills).map(
+                    ([category, categorySkills]) => {
+                      const info = categoryInfo[category];
+                      const CategoryIcon = info.icon;
 
                       return (
-                        <div
-                          key={`${category}-${skill.name}`}
-                          className="group card-surface p-4 hover:border-primary/40 flex flex-col items-center text-center gap-3"
-                        >
-                          {Icon && (
-                            <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-card group-hover:scale-110 transition-transform duration-300">
-                              <Icon className="text-xl text-primary" />
+                        <div key={category}>
+                          {/* Category Header — terminal prompt style */}
+                          <div className="flex items-center gap-2 mb-4">
+                            <span className="text-xs font-mono text-muted/50">$</span>
+                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                              <CategoryIcon className="size-4 text-primary" />
                             </div>
-                          )}
-                          <div>
-                            <h4 className="text-sm font-semibold text-foreground">
-                              {skill.name}
-                            </h4>
-                            <span className="text-xs text-muted font-mono">
-                              {t(`skills.levels.${skill.level}`)}
-                            </span>
+                            <div>
+                              <h3 className="text-sm font-bold text-foreground">
+                                {t(`skills.categories.${category}.title`)}
+                              </h3>
+                              <p className="text-xs text-muted">
+                                {t(`skills.categories.${category}.description`)}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Skills Mosaic */}
+                          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                            {categorySkills.map((skill, i) => {
+                              const Icon = iconMap[skill.name];
+                              const isAdvanced = skill.level === "Advanced";
+
+                              return (
+                                <motion.div
+                                  key={`${category}-${skill.name}`}
+                                  layout
+                                  initial={{ opacity: 0, scale: 0.9 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{
+                                    duration: 0.3,
+                                    delay: i * 0.05,
+                                  }}
+                                  whileHover={{ y: -3, scale: 1.02 }}
+                                  className={cn(
+                                    "group p-3 sm:p-4 rounded-lg border transition-all duration-300 flex flex-col items-center text-center gap-2 cursor-default",
+                                    isAdvanced
+                                      ? "border-primary/20 bg-primary/5 hover:border-primary/40 hover:shadow-[0_0_15px_-3px_hsl(var(--primary)/0.2)]"
+                                      : "border-border/40 bg-background/20 hover:border-primary/20"
+                                  )}
+                                >
+                                  {Icon && (
+                                    <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-card/50 group-hover:scale-110 transition-transform duration-300">
+                                      <Icon className="text-lg text-primary" />
+                                    </div>
+                                  )}
+                                  <div>
+                                    <h4 className="text-xs font-semibold text-foreground">
+                                      {skill.name}
+                                    </h4>
+                                    <span className="text-[10px] text-muted font-mono">
+                                      {t(`skills.levels.${skill.level}`)}
+                                    </span>
+                                  </div>
+                                </motion.div>
+                              );
+                            })}
                           </div>
                         </div>
                       );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-          )}
-        </div>
+                    }
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </LayoutGroup>
+          </div>
+        </WindowTile>
       </div>
     </section>
   );

@@ -103,5 +103,23 @@
   "footer": {
     "rights": "All rights reserved.",
     "builtWith": "Built with React, Tailwind CSS & Vite"
+  },
+  "terminal": {
+    "title": "Command Palette",
+    "placeholder": "Search actions...",
+    "noResults": "No results found",
+    "navigate": "navigate",
+    "select": "select",
+    "openPalette": "Open command palette",
+    "homeDesc": "Go to the top of the page",
+    "aboutDesc": "Learn about my background",
+    "skillsDesc": "View my tech stack",
+    "projectsDesc": "Browse my projects",
+    "contactDesc": "Get in touch with me",
+    "toggleTheme": "Toggle Theme",
+    "toggleThemeDesc": "Switch between dark and light mode",
+    "switchLang": "Switch language",
+    "openGithub": "Open my GitHub profile",
+    "openLinkedin": "Open my LinkedIn profile"
   }
 }

@@ -1,9 +1,26 @@
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, TerminalSquare } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+
+/**
+ * Navbar — Hyprland waybar-style minimal top bar.
+ *
+ * Desktop:
+ *   Left:   "luis@portfolio ~$" terminal prompt
+ *   Center: Section links as small text items
+ *   Right:  Language, Theme, Terminal button
+ *
+ * Mobile:
+ *   Logo + Language + Theme + Hamburger
+ *   Full-screen overlay for nav links
+ *
+ * On scroll: gets a frosted glass background.
+ * Active section highlighted with a primary dot indicator.
+ */
 
 const navItems = [
   { key: "home", href: "#hero" },
@@ -13,7 +30,7 @@ const navItems = [
   { key: "contact", href: "#contact" },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ onTerminalOpen }) => {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,45 +82,63 @@ export const Navbar = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
         isScrolled
-          ? "py-3 bg-background/80 backdrop-blur-lg border-b border-border"
-          : "py-5"
+          ? "py-2.5 bg-background/70 backdrop-blur-xl border-b border-border/50"
+          : "py-4"
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
+        {/* Logo — terminal prompt style */}
         <a
-          className="text-lg font-bold text-foreground relative z-50 tracking-tight"
+          className="text-sm font-mono text-foreground relative z-50 tracking-tight flex items-center gap-1.5"
           href="#hero"
         >
-          <span className="hidden sm:inline">Luis Toscano-Palomino</span>
-          <span className="sm:hidden">Luis T.</span>
+          <span className="text-primary">luis</span>
+          <span className="text-muted">@</span>
+          <span className="hidden sm:inline text-foreground/80">portfolio</span>
+          <span className="text-muted ml-1">~$</span>
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-0.5">
           {navItems.map((item) => (
             <a
               key={item.key}
               href={item.href}
               className={cn(
-                "relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg",
+                "relative px-3 py-1.5 text-xs font-medium transition-colors duration-300 rounded-md",
                 activeSection === item.href
-                  ? "text-primary"
+                  ? "text-primary bg-primary/5"
                   : "text-muted hover:text-foreground"
               )}
             >
               {t(`navbar.${item.key}`)}
               {activeSection === item.href && (
-                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
+                <motion.span
+                  layoutId="nav-dot"
+                  className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
               )}
             </a>
           ))}
-          <div className="ml-2 pl-2 border-l border-border flex items-center gap-1">
+          <div className="ml-3 pl-3 border-l border-border/50 flex items-center gap-1">
             <LanguageSelector />
             <ThemeToggle />
+            {/* Terminal button in navbar */}
+            <button
+              onClick={onTerminalOpen}
+              className="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
+              aria-label="Open command palette"
+            >
+              <TerminalSquare className="size-4 text-muted hover:text-primary transition-colors" />
+            </button>
           </div>
         </div>
 
@@ -152,9 +187,26 @@ export const Navbar = () => {
                 {t(`navbar.${item.key}`)}
               </a>
             ))}
+
+            {/* Terminal button in mobile menu */}
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                setTimeout(() => onTerminalOpen?.(), 200);
+              }}
+              className="w-full text-center py-3 px-6 text-lg font-medium rounded-lg text-primary bg-primary/5 hover:bg-primary/10 transition-all duration-300 mt-2 flex items-center justify-center gap-2"
+              style={{
+                transitionDelay: isMenuOpen ? `${navItems.length * 50}ms` : "0ms",
+                transform: isMenuOpen ? "translateY(0)" : "translateY(10px)",
+                opacity: isMenuOpen ? 1 : 0,
+              }}
+            >
+              <TerminalSquare className="size-5" />
+              <span className="font-mono text-sm">Ctrl+K</span>
+            </button>
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };

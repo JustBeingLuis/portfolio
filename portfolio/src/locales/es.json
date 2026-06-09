@@ -103,5 +103,23 @@
   "footer": {
     "rights": "Todos los derechos reservados.",
     "builtWith": "Desarrollado con React, Tailwind CSS y Vite"
+  },
+  "terminal": {
+    "title": "Paleta de Comandos",
+    "placeholder": "Buscar acciones...",
+    "noResults": "No se encontraron resultados",
+    "navigate": "navegar",
+    "select": "seleccionar",
+    "openPalette": "Abrir paleta de comandos",
+    "homeDesc": "Ir al inicio de la página",
+    "aboutDesc": "Conocer mi trayectoria",
+    "skillsDesc": "Ver mis tecnologías",
+    "projectsDesc": "Explorar mis proyectos",
+    "contactDesc": "Ponerse en contacto conmigo",
+    "toggleTheme": "Cambiar Tema",
+    "toggleThemeDesc": "Cambiar entre modo oscuro y claro",
+    "switchLang": "Cambiar idioma",
+    "openGithub": "Abrir mi perfil de GitHub",
+    "openLinkedin": "Abrir mi perfil de LinkedIn"
   }
 }
