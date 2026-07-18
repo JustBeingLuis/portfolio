@@ -163,7 +163,11 @@
     "toggleThemeDesc": "Switch between dark and light mode",
     "switchLang": "Switch language",
     "openGithub": "Open my GitHub profile",
-    "openLinkedin": "Open my LinkedIn profile"
+    "openLinkedin": "Open my LinkedIn profile",
+    "status": {
+      "ready": "READY",
+      "processing": "PROCESSING"
+    }
   },
   "boot": {
     "skip": "click or press any key to skip"

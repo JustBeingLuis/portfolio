@@ -163,7 +163,11 @@
     "toggleThemeDesc": "Cambiar entre modo oscuro y claro",
     "switchLang": "Cambiar idioma",
     "openGithub": "Abrir mi perfil de GitHub",
-    "openLinkedin": "Abrir mi perfil de LinkedIn"
+    "openLinkedin": "Abrir mi perfil de LinkedIn",
+    "status": {
+      "ready": "LISTO",
+      "processing": "PROCESANDO"
+    }
   },
   "boot": {
     "skip": "haz clic o presiona cualquier tecla para omitir"

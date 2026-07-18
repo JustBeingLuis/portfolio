@@ -1,26 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { MeshBackground } from "@/components/MeshBackground";
-import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/HeroSection";
-import { AboutMe } from "@/components/AboutMe";
-import { Skills } from "@/components/Skills";
-import { Projects } from "@/components/projects";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Terminal } from "@/components/Terminal";
-import { TerminalButton } from "@/components/TerminalButton";
 import { BootSequence } from "@/components/BootSequence";
+import { TerminalShell } from "@/components/TerminalShell";
+import { Terminal } from "@/components/Terminal";
 
-/**
- * Home — Main page layout.
- *
- * Manages:
- * - Boot sequence (shown on first visit of a session)
- * - Terminal command palette (Ctrl+K global shortcut)
- * - MeshBackground (CSS gradient + grid overlay)
- * - All content sections stacked vertically
- *   (individual sections handle their own bento grid layouts)
- */
 export const Home = () => {
   const [isBooted, setIsBooted] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -56,33 +38,17 @@ export const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Background Effects */}
-
-
-      {/* Navbar */}
-      <Navbar onTerminalOpen={() => setIsTerminalOpen(true)} />
-
-      {/* Main Content */}
-      <main>
-        <HeroSection />
-        <AboutMe />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <Footer />
+    <div className="h-screen w-full bg-background text-foreground flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 lg:p-8">
+      {/* Unified Terminal Shell replaces all vertical sections */}
+      <TerminalShell onOpenCommandPalette={() => setIsTerminalOpen(true)} />
 
       {/* Terminal Command Palette */}
       <Terminal
         isOpen={isTerminalOpen}
         onClose={() => setIsTerminalOpen(false)}
       />
-
-      {/* Floating terminal button */}
-      <TerminalButton onClick={() => setIsTerminalOpen(true)} />
     </div>
   );
 };
+
+export default Home;
