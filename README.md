@@ -1,83 +1,51 @@
-# Portfolio – Luis Toscano-Palomino
+# Terminal Portfolio Interface
 
-Welcome to my personal portfolio, developed with **React**, **Tailwind CSS**, and **Vite**. Here you will find a showcase of my projects, skills, and experience in web development and data science.
+## Abstract
+A web-based portfolio featuring a unified terminal-emulator interface. The system replaces traditional web navigation and scroll-based layouts with a command-line interface paradigm. Users interact with the environment via pseudo-commands to fetch sections (e.g., Hero, About, Projects, Contact), rendering content dynamically within a persistent shell view.
 
-## 🚀 Main Technologies
+## Architecture
+The application is structured as a single-page application (SPA) using React. The core layout relies on a centralized `TerminalShell` component that manages state and layout constraints. Content injection is handled via modular components representing discrete terminal outputs.
 
-- **React** – Modern and dynamic UI
-- **Tailwind CSS** – Fast and customizable styling
-- **Vite** – Ultra-fast build and development
-- **Python** – Automation and backend
-- **GitHub Actions** – Automatic project updates
+Key design decisions:
+- **Unified Shell Layout:** Eliminates vertical scrolling in favor of a fixed-viewport terminal interface.
+- **Dynamic Content Rendering:** Sections are swapped seamlessly without page reloads, mimicking the execution of sequential terminal commands.
+- **Command Palette Integration:** A global keyboard shortcut (`Ctrl+K`) triggers a command palette for rapid navigation, maintaining the CLI-centric workflow.
+- **Internationalization:** Multi-language support (English/Spanish) is integrated via `react-i18next`.
 
-## 📁 Project Structure
+## Technical Specifications
+- **Core Framework:** React 18
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS (with custom CSS variables for theme generation)
+- **Animation:** Framer Motion
+- **Typography & Icons:** Google Fonts (Inter, JetBrains Mono), Lucide React, React Icons
+- **Internationalization:** i18next
 
-```
-portfolio/
-├── data/
-│   └── repos.json           # Projects automatically fetched from GitHub
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── assets/              # Images and resources
-│   ├── components/          # Reusable components
-│   ├── lib/                 # JS utilities
-│   ├── pages/               # Main pages
-│   ├── App.jsx              # Root component
-│   ├── main.jsx             # Main entry point
-│   └── index.css            # Global styles
-├── .github/
-│   └── workflows/           # GitHub Actions to update repos.json
-├── package.json
-├── vite.config.js
-└── README.md
-```
+## Installation and Execution
 
-## 🛠 Installation and Local Usage
+### Prerequisites
+- Node.js (>= 18.0.0 recommended)
+- npm (Node Package Manager)
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/JustBeingLuis/portfolio.git
-   cd portfolio/portfolio
-   ```
-
-2. **Install dependencies:**
+### Setup
+1. Clone the repository and navigate into the project directory.
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-3. **Start the development server:**
+3. Start the development server:
    ```bash
    npm run dev
    ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-4. **Open in your browser:**  
-   [http://localhost:5173](http://localhost:5173)
+## Directory Structure
+- `src/components`: Reusable UI modules (`TerminalShell`, `FastFetch`, `BootSequence`, etc.).
+- `src/pages`: Top-level routing views (`Home`, `NotFound`).
+- `src/locales`: JSON dictionaries handling string translations.
+- `src/config`: Static configuration files (e.g., ASCII art payloads).
+- `src/hooks`: Custom React hooks for cross-component logic.
 
-## 🔄 Automatic Project Updates
 
-The [`data/repos.json`](data/repos.json) file is automatically updated with each push to the `main` branch and on the 15th of every month at 00:00 UTC, thanks to a GitHub Actions workflow that runs the [`gitFetch.py`](../gitFetch.py) script.
-
-## 📦 Main Scripts
-
-- `npm run dev` – Start the development server
-- `npm run build` – Build the app for production
-- `npm run preview` – Preview the production build
-- `npm run lint` – Run ESLint
-
-## ✨ Features
-
-- **Projects:** Dynamically listed from your GitHub using a static JSON file.
-- **Skills:** Interactive visualization of your skills and tools.
-- **Contact:** Functional form and social media links.
-- **Dark/Light Theme:** Switch themes with one click.
-- **Animations:** Modern interface with visual effects.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-**Luis Toscano-Palomino**  
-[GitHub](https://github.com/JustBeingLuis) •
