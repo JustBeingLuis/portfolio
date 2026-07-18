@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { GoogleScholarIcon } from "@/components/icons/GoogleScholarIcon";
 import { useTranslation } from "react-i18next";

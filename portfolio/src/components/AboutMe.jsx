@@ -1,5 +1,5 @@
 import { Terminal, User, MapPin, GraduationCap, Sparkles, Cpu, Check } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 
 export const AboutMe = () => {

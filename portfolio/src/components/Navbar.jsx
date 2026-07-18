@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 

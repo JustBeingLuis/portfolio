@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import CommandLine from './CommandLine';
 import StatusBar from './StatusBar';
 import Navbar from './Navbar';

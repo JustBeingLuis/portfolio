@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Code, Server, FlaskConical, Wrench, Activity, Database } from "lucide-react";
 import {
   FaCss3Alt,

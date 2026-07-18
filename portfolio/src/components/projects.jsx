@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import reposData from "@/../data/repos.json";
 import { FaGithub } from "react-icons/fa";
 import { Terminal, FolderOpen, FileCode, ChevronRight } from "lucide-react";
