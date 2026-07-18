@@ -14,7 +14,9 @@
       "ai": "Passionné d'IA"
     },
     "viewWork": "Voir mon travail",
-    "scroll": "Défiler"
+    "scroll": "Défiler",
+    "getInTouch": "CONTACTER",
+    "queryProjects": "VOIR_PROJETS"
   },
   "about": {
     "title1": "À",
@@ -30,6 +32,12 @@
     "msc": "Candidat à la Maîtrise en Informatique",
     "present": "Présent",
     "bsc": "Licence en Informatique",
+    "systemEngineer": "Ingénieur Systèmes",
+    "bilingual": "Bilingue (ES/EN)",
+    "quote": "\"Construire des systèmes évolutifs et des interfaces modernes avec une touche de magie.\"",
+    "professionalProfile": "Profil Professionnel",
+    "educationTitle": "Éducation",
+    "methodologyTitle": "Méthodologie",
     "coreCompetencies": "Compétences Clés",
     "focusAreas": "Domaines de Concentration & Rôles",
     "researchSub": "IA & ML • Optimisation",
@@ -41,6 +49,12 @@
       "teamCollab": "Collaboration",
       "criticalThinking": "Esprit Critique",
       "innovation": "Innovation"
+    },
+    "methodology": {
+      "1": "Recherche Appliquée Rigoureuse (IA & ML)",
+      "2": "Résolution de Problèmes Basée sur les Données",
+      "3": "Développement Web Moderne et Interactif (React, Tailwind)",
+      "4": "Architectures Optimisées et Évolutives"
     }
   },
   "skills": {
@@ -75,6 +89,32 @@
     "levels": {
       "Advanced": "Avancé",
       "Intermediate": "Intermédiaire"
+    },
+    "status": "sys-status --modules",
+    "systemArch": "Architecture du Système",
+    "modules": {
+      "frontend": {
+        "title": "Interfaces Frontend",
+        "status": "EN LIGNE",
+        "desc": "Création d'applications web réactives et performantes."
+      },
+      "research": {
+        "title": "Données & Recherche",
+        "desc": "Informatique et analyse scientifiques",
+        "cpu": "Charge CPU",
+        "python": "Pipelines de données IA & ML",
+        "matlab": "Simulation scientifique",
+        "r": "Analyse statistique"
+      },
+      "backend": {
+        "title": "Backend & BDD",
+        "desc": "Persistance des données & APIs",
+        "status": "CONNECTÉ"
+      },
+      "env": {
+        "title": "Environnement",
+        "desc": "Outils DevOps & Flux de travail"
+      }
     }
   },
   "projects": {
@@ -85,7 +125,9 @@
     "noDescription": "Ce projet n'a pas de description disponible.",
     "viewGithub": "Voir sur GitHub",
     "showMore": "Voir plus",
-    "showLess": "Voir moins"
+    "showLess": "Voir moins",
+    "noTechStack": "Aucune pile technologique listée",
+    "source": "CODE SOURCE"
   },
   "contact": {
     "title1": "Contactez",
@@ -98,7 +140,8 @@
     "basedIn": "Basé à",
     "locationValue": "Bucaramanga, Colombie",
     "remote": "— Ouvert aux opportunités à distance",
-    "publications": "Publications"
+    "publications": "Publications",
+    "phone": "Téléphone"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -121,5 +164,8 @@
     "switchLang": "Changer de langue",
     "openGithub": "Ouvrir mon profil GitHub",
     "openLinkedin": "Ouvrir mon profil LinkedIn"
+  },
+  "boot": {
+    "skip": "cliquez ou appuyez sur une touche pour passer"
   }
 }

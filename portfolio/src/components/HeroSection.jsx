@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Terminal as TerminalIcon } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { GoogleScholarIcon } from "@/components/icons/GoogleScholarIcon";
 import { useTranslation } from "react-i18next";
+import { WindowTile } from "@/components/WindowTile";
 
 /**
- * HeroSection — Terminal-inspired hero with a "command prompt" aesthetic.
- *
- * Shows the name with a staggered character reveal, a typing subtitle,
- * and social links as terminal-style badges. The whole thing feels
- * like you just opened a terminal and ran `whoami`.
+ * HeroSection — Terminal-inspired hero with a real command prompt shell layout.
  */
 export const HeroSection = () => {
   const { t } = useTranslation();
@@ -30,146 +27,168 @@ export const HeroSection = () => {
     let timeout;
 
     if (!isDeleting && displayText === currentRole) {
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
+      timeout = setTimeout(() => setIsDeleting(true), 2200);
     } else if (isDeleting && displayText === "") {
       setIsDeleting(false);
       setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
     } else if (isDeleting) {
       timeout = setTimeout(() => {
         setDisplayText(currentRole.substring(0, displayText.length - 1));
-      }, 40);
+      }, 30);
     } else {
       timeout = setTimeout(() => {
         setDisplayText(currentRole.substring(0, displayText.length + 1));
-      }, 80);
+      }, 60);
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentRoleIndex]);
+  }, [displayText, isDeleting, currentRoleIndex, roles]);
 
-  // Stagger variants for child elements
   const containerVariants = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.1, delayChildren: 0.15 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-20"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container max-w-4xl mx-auto text-center z-10 relative"
+        className="container max-w-3xl mx-auto z-10 relative"
       >
-        <div className="space-y-6 sm:space-y-8">
-          {/* Terminal prompt label */}
-          <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-primary/80 border border-primary/20 rounded-full bg-primary/5">
-              <span className="text-muted">$</span> whoami
-            </span>
-          </motion.div>
-
-          {/* Status badge */}
-          <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium text-muted border border-border rounded-full">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              {t("hero.status")}
-            </span>
-          </motion.div>
-
-          {/* Name — big, bold, staggered */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none"
-          >
-            <span className="block">Luis</span>
-            <span className="text-primary block">Toscano-Palomino</span>
-          </motion.h1>
-
-          {/* Typewriter subtitle — now looks like terminal output */}
-          <motion.div
-            variants={itemVariants}
-            className="h-8 sm:h-10 flex items-center justify-center"
-          >
-            <span className="text-xs text-muted/60 font-mono mr-2">{">"}</span>
-            <span className="text-lg sm:text-xl md:text-2xl font-mono text-muted">
-              {displayText}
-            </span>
-            <span className="w-0.5 h-6 sm:h-7 bg-primary ml-0.5 animate-blink" />
-          </motion.div>
-
-          {/* CTA */}
-          <motion.div variants={itemVariants} className="pt-4 sm:pt-6">
-            <a
-              href="#projects"
-              className="accent-button inline-block text-sm sm:text-base"
-            >
-              {t("hero.viewWork")}
-            </a>
-          </motion.div>
-
-          {/* Social links — terminal badge style */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center gap-3 pt-2"
-          >
-            {[
-              {
-                href: "https://github.com/JustBeingLuis",
-                label: "GitHub",
-                Icon: FaGithub,
-              },
-              {
-                href: "https://www.linkedin.com/in/luistoscanop",
-                label: "LinkedIn",
-                Icon: FaLinkedinIn,
-              },
-              {
-                href: "https://scholar.google.com/citations?user=AQ_grM8AAAAJ&hl=es",
-                label: "Scholar",
-                Icon: GoogleScholarIcon,
-              },
-            ].map(({ href, label, Icon }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 text-muted hover:text-primary window-tile border border-border/50 hover:border-primary/30 rounded-lg transition-all duration-300"
-                aria-label={label}
+        <WindowTile
+          title="luism@sys-dev: ~"
+          icon={TerminalIcon}
+          className="w-full"
+          noPadding
+        >
+          <div className="font-mono text-left p-6 sm:p-8 space-y-6 text-sm sm:text-base leading-relaxed">
+            {/* Command 1: whoami */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-primary font-bold">luism@sys-dev</span>
+                <span className="text-muted">:</span>
+                <span className="text-blue-400">~</span>
+                <span className="text-foreground">$</span>
+                <span className="text-foreground">whoami</span>
+              </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="pl-4 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-tight"
               >
-                <Icon className="size-5" />
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
+                Luis Toscano-Palomino
+              </motion.div>
+            </div>
+
+            {/* Command 2: cat roles.sh */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-primary font-bold">luism@sys-dev</span>
+                <span className="text-muted">:</span>
+                <span className="text-blue-400">~</span>
+                <span className="text-foreground">$</span>
+                <span className="text-foreground">cat roles.sh</span>
+              </div>
+              <div className="pl-4 flex items-center min-h-[30px] text-muted-foreground border-l-2 border-primary/10 bg-primary/5 py-2 px-3 rounded">
+                <span className="text-primary mr-2 font-bold">&gt;</span>
+                <span className="text-primary font-medium">{displayText}</span>
+                <span className="w-2 h-4 sm:h-5 bg-primary ml-1 animate-blink inline-block align-middle" />
+              </div>
+            </div>
+
+            {/* Command 3: run --cta-action */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-primary font-bold">luism@sys-dev</span>
+                <span className="text-muted">:</span>
+                <span className="text-blue-400">~</span>
+                <span className="text-foreground">$</span>
+                <span className="text-foreground">run --cta-action</span>
+              </div>
+              
+              <div className="pl-4 flex flex-wrap gap-4 pt-2">
+                <a
+                  href="#contact"
+                  className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded font-mono text-sm transition-all duration-200 active:scale-95 border border-primary/50 shadow-lg shadow-primary/10"
+                >
+                  [ {t("hero.getInTouch", "GET_IN_TOUCH")} ]
+                </a>
+                
+                <a
+                  href="#projects"
+                  className="px-5 py-2.5 bg-transparent border border-border hover:border-primary/50 hover:text-primary text-muted font-semibold rounded font-mono text-sm transition-all duration-200 active:scale-95"
+                >
+                  [ {t("hero.queryProjects", "QUERY_PROJECTS")} ]
+                </a>
+              </div>
+            </div>
+
+            {/* Command 4: cat socials.json */}
+            <div className="space-y-2 pt-2">
+              <div className="flex items-center gap-2">
+                <span className="text-primary font-bold">luism@sys-dev</span>
+                <span className="text-muted">:</span>
+                <span className="text-blue-400">~</span>
+                <span className="text-foreground">$</span>
+                <span className="text-foreground">cat socials.json</span>
+              </div>
+              <div className="pl-4 flex items-center gap-3">
+                {[
+                  {
+                    href: "https://github.com/JustBeingLuis",
+                    label: "github",
+                    Icon: FaGithub,
+                  },
+                  {
+                    href: "https://www.linkedin.com/in/luistoscanop",
+                    label: "linkedin",
+                    Icon: FaLinkedinIn,
+                  },
+                  {
+                    href: "https://scholar.google.com/citations?user=AQ_grM8AAAAJ&hl=es",
+                    label: "scholar",
+                    Icon: GoogleScholarIcon,
+                  },
+                ].map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-muted hover:text-primary border border-border/40 hover:border-primary/30 rounded bg-primary/5 hover:bg-primary/10 transition-all duration-200 hover:-translate-y-0.5"
+                  >
+                    <Icon className="size-4" />
+                    <span>{label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </WindowTile>
       </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-xs text-muted font-mono tracking-widest uppercase">
@@ -185,3 +204,4 @@ export const HeroSection = () => {
     </section>
   );
 };
+

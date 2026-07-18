@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, ArrowUpRight, Copy, Check } from "lucide-react";
+import { Mail, Phone, MapPin, Copy, Check, Terminal } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { GoogleScholarIcon } from "@/components/icons/GoogleScholarIcon";
-import { WindowTile } from "@/components/WindowTile";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-
+import { WindowTile } from "@/components/WindowTile";
 /**
- * Contact — Bento grid of contact tiles.
+ * Contact — Terminal interactive panel.
  *
  * Layout:
- * - Email CTA tile (large, spans 2 cols)
- * - 4 social link tiles in a row
- * - Location bar tile (full width)
- *
- * Each tile is a WindowTile with staggered entry animations.
+ * - Terminal UI
+ * - Simulated `curl --socials` command
+ * - Simulated `grep -i "email" contact.txt` command
  */
 
 const EMAIL = "luismariotoscanopalomino@gmail.com";
@@ -37,150 +34,156 @@ export const Contact = () => {
 
   const socialLinks = [
     {
+      id: "linkedin",
       href: "https://www.linkedin.com/in/luistoscanop",
       Icon: FaLinkedinIn,
       label: "LinkedIn",
-      sub: "luistoscanop",
+      value: "luistoscanop",
+      color: "text-[#0077b5]"
     },
     {
+      id: "github",
       href: "https://github.com/JustBeingLuis",
       Icon: FaGithub,
       label: "GitHub",
-      sub: "JustBeingLuis",
+      value: "JustBeingLuis",
+      color: "text-foreground"
     },
     {
+      id: "scholar",
       href: "https://scholar.google.com/citations?user=AQ_grM8AAAAJ&hl=es",
       Icon: GoogleScholarIcon,
       label: "Scholar",
-      sub: t("contact.publications"),
+      value: t("contact.publications", "Publications"),
+      color: "text-[#4285F4]"
     },
     {
+      id: "phone",
       href: "tel:+573150571959",
       Icon: Phone,
-      label: "Phone",
-      sub: "+57 315 0571959",
+      label: t("contact.phone", "Phone"),
+      value: "+57 315 0571959",
+      color: "text-emerald-500"
     },
   ];
 
   return (
-    <section id="contact" className="py-20 sm:py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+    <section id="contact" className="py-20 sm:py-24 px-4 relative font-mono">
+      <div className="container mx-auto max-w-4xl">
+        {/* Terminal Window */}
+        <WindowTile
+          title="~/contact"
+          icon={Terminal}
+          className="bg-card dark:bg-[#0A0A0A]"
+          noPadding
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-primary/80 border border-primary/20 rounded-full bg-primary/5 mb-6">
-            <span className="text-muted">$</span> mail --compose
-          </div>
-          <h2 className="section-heading mb-4">
-            {t("contact.title1")}{" "}
-            <span className="text-primary">{t("contact.title2")}</span>
-          </h2>
-          <div className="w-12 h-0.5 bg-primary mx-auto mb-4" />
-          <p className="text-base sm:text-lg text-muted max-w-xl mx-auto">
-            {t("contact.subtitle")}
-          </p>
-        </motion.div>
+          {/* Terminal Body */}
+          <div className="p-6 sm:p-8 text-sm sm:text-base">
+            <div className="mb-6">
+              <span className="text-primary font-bold">luism@sys-dev</span>
+              <span className="text-muted">:$ ~ </span>
+              <span className="text-foreground">curl --socials</span>
+            </div>
 
-        <div className="space-y-4">
-          {/* Email CTA — large tile */}
-          <WindowTile title="compose.mail" icon={Mail} delay={0}>
-            <div className="text-center py-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                <Mail className="size-6 text-primary" />
-              </div>
-              <p className="text-sm text-muted uppercase tracking-wider font-semibold mb-3">
-                {t("contact.reachMe")}
-              </p>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="text-lg sm:text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors duration-300 block mb-6 break-all"
-              >
-                {EMAIL}
-              </a>
-              <div className="flex items-center justify-center gap-3 flex-wrap">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="accent-button inline-flex items-center gap-2 text-sm"
-                >
-                  {t("contact.sendEmail")}
-                  <ArrowUpRight className="size-4" />
-                </a>
-                <button
-                  onClick={copyEmail}
-                  className={cn(
-                    "inline-flex items-center gap-2 px-5 py-3 rounded-lg border text-sm font-semibold transition-all duration-300",
-                    copied
-                      ? "border-emerald-500/40 text-emerald-500 bg-emerald-500/5"
-                      : "border-border text-foreground hover:border-primary hover:text-primary"
-                  )}
-                >
-                  {copied ? (
-                    <>
-                      <Check className="size-4" />
-                      {t("contact.copied")}
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="size-4" />
-                      {t("contact.copy")}
-                    </>
-                  )}
-                </button>
+            <div className="space-y-4 mb-8 pl-0 sm:pl-4">
+              <div className="text-muted mb-4">{t("contact.subtitle")}</div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {socialLinks.map((link, i) => (
+                  <motion.a
+                    key={link.id}
+                    href={link.href}
+                    target={link.href.startsWith("tel:") ? undefined : "_blank"}
+                    rel={link.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 + i * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center gap-4 p-4 border border-primary/20 rounded-lg hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
+                  >
+                    <div className="p-3 bg-primary/10 rounded-md group-hover:bg-primary/20 transition-colors">
+                      <link.Icon className={cn("size-5", link.color)} />
+                    </div>
+                    <div>
+                      <div className="text-muted text-xs uppercase tracking-wider">{link.label}</div>
+                      <div className="text-foreground font-semibold group-hover:text-primary transition-colors">{link.value}</div>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
             </div>
-          </WindowTile>
 
-          {/* Social links — grid of tiles */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {socialLinks.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("tel:") ? undefined : "_blank"}
-                rel={link.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
-                whileHover={{ y: -3 }}
-                className="group window-tile tile-hover-glow p-5 text-center"
-              >
-                <link.Icon className="size-6 text-muted group-hover:text-primary transition-colors duration-300 mx-auto mb-3" />
-                <span className="text-sm font-semibold text-foreground block">
-                  {link.label}
-                </span>
-                <span className="text-xs text-muted mt-1 block group-hover:text-primary transition-colors duration-300">
-                  {link.sub}
-                </span>
-              </motion.a>
-            ))}
+            <div className="mb-6">
+              <span className="text-primary font-bold">luism@sys-dev</span>
+              <span className="text-muted">:$ ~ </span>
+              <span className="text-foreground">grep -i "email" contact.txt</span>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              className="pl-0 sm:pl-4"
+            >
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-primary/20 rounded-lg bg-primary/5">
+                <div className="flex items-center gap-3 mb-4 sm:mb-0">
+                  <Mail className="size-5 text-primary" />
+                  <div>
+                    <div className="text-muted text-xs uppercase tracking-wider">{t("contact.reachMe")}</div>
+                    <a href={`mailto:${EMAIL}`} className="text-foreground font-semibold hover:text-primary transition-colors break-all">
+                      {EMAIL}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex gap-2 w-full sm:w-auto">
+                   <button
+                    onClick={copyEmail}
+                    className={cn(
+                      "flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 border rounded-md transition-all duration-300 text-sm",
+                      copied
+                        ? "border-emerald-500/50 text-emerald-500 bg-emerald-500/10"
+                        : "border-primary/30 text-foreground hover:border-primary hover:bg-primary/10"
+                    )}
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="size-4" />
+                        {t("contact.copied")}
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-4" />
+                        {t("contact.copy")}
+                      </>
+                    )}
+                  </button>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-semibold"
+                  >
+                    {t("contact.sendEmail")}
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.7 }}
+              className="mt-8 flex flex-wrap items-center gap-2 text-muted text-sm border-t border-primary/20 pt-4"
+            >
+              <MapPin className="size-4 text-primary" />
+              <span>{t("contact.basedIn")} <strong className="text-foreground">{t("contact.locationValue")}</strong></span>
+              <span className="mx-2 opacity-50 hidden sm:inline">|</span>
+              <span className="hidden sm:inline">{t("contact.remote")}</span>
+            </motion.div>
+
           </div>
-
-          {/* Location bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="window-tile px-6 py-4 flex items-center justify-center gap-3 flex-wrap"
-          >
-            <MapPin className="size-4 text-primary shrink-0" />
-            <span className="text-sm text-muted">
-              {t("contact.basedIn")}{" "}
-              <span className="text-foreground font-medium">
-                {t("contact.locationValue")}
-              </span>
-            </span>
-            <span className="text-xs text-muted hidden sm:inline">
-              {t("contact.remote")}
-            </span>
-          </motion.div>
-        </div>
+        </WindowTile>
       </div>
     </section>
   );

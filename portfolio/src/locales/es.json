@@ -14,7 +14,9 @@
       "ai": "Entusiasta de IA"
     },
     "viewWork": "Ver mi trabajo",
-    "scroll": "Deslizar"
+    "scroll": "Deslizar",
+    "getInTouch": "CONTACTAR",
+    "queryProjects": "VER_PROYECTOS"
   },
   "about": {
     "title1": "Sobre",
@@ -30,6 +32,12 @@
     "msc": "Candidato a Magíster en Ciencias de la Computación",
     "present": "Actualidad",
     "bsc": "Ingeniero de Sistemas",
+    "systemEngineer": "Ingeniero de Sistemas",
+    "bilingual": "Bilingüe (ES/EN)",
+    "quote": "\"Construyendo sistemas escalables e interfaces modernas con un toque de magia.\"",
+    "professionalProfile": "Perfil Profesional",
+    "educationTitle": "Educación",
+    "methodologyTitle": "Metodología",
     "coreCompetencies": "Competencias Clave",
     "focusAreas": "Áreas de Enfoque y Roles",
     "researchSub": "IA & ML • Optimización",
@@ -41,6 +49,12 @@
       "teamCollab": "Colaboración en Equipo",
       "criticalThinking": "Pensamiento Crítico",
       "innovation": "Innovación"
+    },
+    "methodology": {
+      "1": "Investigación Aplicada Rigurosa (IA & ML)",
+      "2": "Resolución de Problemas Basada en Datos",
+      "3": "Desarrollo Web Moderno e Interactivo (React, Tailwind)",
+      "4": "Arquitecturas Optimizadas y Escalables"
     }
   },
   "skills": {
@@ -75,6 +89,32 @@
     "levels": {
       "Advanced": "Avanzado",
       "Intermediate": "Intermedio"
+    },
+    "status": "sys-status --modulos",
+    "systemArch": "Arquitectura del Sistema",
+    "modules": {
+      "frontend": {
+        "title": "Interfaces Frontend",
+        "status": "EN LÍNEA",
+        "desc": "Construcción de aplicaciones web responsivas y de alto rendimiento."
+      },
+      "research": {
+        "title": "Datos e Investigación",
+        "desc": "Computación y análisis científico",
+        "cpu": "Carga de CPU",
+        "python": "Pipelines de datos de IA y ML",
+        "matlab": "Simulación científica",
+        "r": "Análisis estadístico"
+      },
+      "backend": {
+        "title": "Backend y BD",
+        "desc": "Persistencia de datos y APIs",
+        "status": "CONECTADO"
+      },
+      "env": {
+        "title": "Entorno",
+        "desc": "Herramientas DevOps y de Flujo de trabajo"
+      }
     }
   },
   "projects": {
@@ -85,7 +125,9 @@
     "noDescription": "Este proyecto no tiene una descripción disponible.",
     "viewGithub": "Ver en GitHub",
     "showMore": "Mostrar más",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "noTechStack": "No hay stack tecnológico listado",
+    "source": "CÓDIGO"
   },
   "contact": {
     "title1": "Ponte en",
@@ -98,7 +140,8 @@
     "basedIn": "Ubicado en",
     "locationValue": "Bucaramanga, Colombia",
     "remote": "— Abierto a oportunidades remotas a nivel mundial",
-    "publications": "Publicaciones"
+    "publications": "Publicaciones",
+    "phone": "Teléfono"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
@@ -121,5 +164,8 @@
     "switchLang": "Cambiar idioma",
     "openGithub": "Abrir mi perfil de GitHub",
     "openLinkedin": "Abrir mi perfil de LinkedIn"
+  },
+  "boot": {
+    "skip": "haz clic o presiona cualquier tecla para omitir"
   }
 }

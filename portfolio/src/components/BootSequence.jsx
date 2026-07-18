@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 /**
  * BootSequence — Terminal-style boot animation shown on first visit.
@@ -26,6 +27,7 @@ const BOOT_LINES = [
 ];
 
 export const BootSequence = ({ onComplete }) => {
+  const { t } = useTranslation();
   const [visibleLines, setVisibleLines] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
 
@@ -118,7 +120,7 @@ export const BootSequence = ({ onComplete }) => {
             transition={{ delay: 0.5 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs font-mono text-emerald-400/40"
           >
-            click or press any key to skip
+            {t("boot.skip", "click or press any key to skip")}
           </motion.p>
         </motion.div>
       ) : null}

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -13,6 +13,7 @@
 
   --color-card: hsl(var(--card));
   --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
   --animate-fade-in: fade-in 0.6s ease-out forwards;
   --animate-fade-in-delay-1: fade-in 0.6s ease-out 0.15s forwards;
@@ -97,14 +98,15 @@
     --primary-foreground: 0 0% 98%;
 
     --muted: 240 5% 46%;
+    --muted-foreground: 240 5% 35%;
 
     --border: 240 6% 90%;
 
-    --tile-bg: 0 0% 100% / 0.7;
+    --tile-bg: 0 0% 100% / 0.8;
     --tile-border: 240 6% 90%;
-    --tile-glow: 43 72% 38% / 0.1;
+    --tile-glow: 43 72% 38% / 0.15;
 
-    --terminal-bg: 240 6% 97%;
+    --terminal-bg: 0 0% 96%;
     --terminal-text: 240 6% 10%;
   }
 
@@ -118,6 +120,7 @@
     --primary-foreground: 240 21% 12%;
 
     --muted: 228 24% 60%;
+    --muted-foreground: 226 20% 70%;
 
     --border: 237 16% 20%;
 
@@ -236,11 +239,11 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.5;
   background:
-    radial-gradient(ellipse 80% 50% at 20% 40%, hsl(var(--primary) / 0.15), transparent),
-    radial-gradient(ellipse 60% 80% at 80% 20%, hsl(267 84% 60% / 0.08), transparent),
-    radial-gradient(ellipse 50% 60% at 60% 80%, hsl(199 89% 48% / 0.06), transparent);
+    radial-gradient(ellipse 80% 50% at 20% 40%, hsl(var(--primary) / 0.20), transparent),
+    radial-gradient(ellipse 60% 80% at 80% 20%, hsl(24 90% 55% / 0.08), transparent),
+    radial-gradient(ellipse 50% 60% at 60% 80%, hsl(45 95% 65% / 0.10), transparent);
   animation: gradient-shift 15s ease infinite;
   background-size: 200% 200%;
 }
