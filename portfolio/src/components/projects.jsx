@@ -6,7 +6,11 @@ import { Terminal, FolderOpen, FileCode, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 
-const featuredNames = ["BiblioMatch", "DeepWine", "CoworkingHub"];
+const featuredNames = [
+  "EscapeFromHADES-Wiki-Web",
+  "Robust-Illuminance-Drone-Detection-Using-Modulo-Images",
+  "DifussionModelPokemon"
+];
 
 export const Projects = () => {
   const { t } = useTranslation();
@@ -108,6 +112,16 @@ export const Projects = () => {
             </div>
 
             <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none mb-8 flex-grow">
+              {selectedRepo?.image_url && (
+                <div className="mb-4 w-full rounded-lg overflow-hidden border border-[hsl(var(--border))]/40">
+                  <img 
+                    src={selectedRepo.image_url} 
+                    alt={`${selectedRepo.name} banner`}
+                    className="w-full h-auto object-cover"
+                    onError={(e) => e.target.style.display = 'none'}
+                  />
+                </div>
+              )}
               <p className="text-[hsl(var(--muted-foreground))] leading-relaxed font-mono">
                 {selectedRepo?.description || t("projects.noDescription")}
               </p>
